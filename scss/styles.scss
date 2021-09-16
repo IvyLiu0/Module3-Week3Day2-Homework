@@ -1,0 +1,71 @@
+
+@import "colors";
+
+@mixin style ($property1, $property2, $property3, $property4) {
+    background-color: $property1;
+    height: $property2;
+    width: $property3;
+    position: $property4;
+}
+
+@mixin text ($style1, $style2, $style3, $style4, $style5) {
+    position: $style1;
+    text-align: $style2;
+    top: $style3;
+    left: $style4;
+    transform: $style5;
+}
+
+//Global
+* {
+    color: $color;
+    font-size: 1.2rem;
+}
+
+.container {
+    background-color: $container-background-color ;
+    border: 1px solid #000;
+    display: flex;
+    height: 500px;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 1em;
+    width: 50%;
+
+    .left {
+        @include style($left-background-color, 100%, 69%, relative);
+
+        p {
+            @include text (absolute, center, 55%, 50%, translate(-50%, -120%));
+        }
+    }
+
+    .right {
+        @include style($right-background-color, 100%, 29%, relative);
+        
+        p {
+            @include text (absolute, center, 50%, 50%, translate(-50%, -120%));
+        }
+
+        .button {
+            background-color: $button-background-color;
+            color: $left-background-color;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 7em;
+            height: 2.5em;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 0.5em 2em;
+
+            //this is to center content vertically
+            // position: absolute;
+            // top: 100%;
+            // left: 50%;
+            // transform: translate(-50%, -120%);
+            @include text(absolute, center, 100%, 50%, translate(-50%, -120%));
+        }
+    }
+
+}
